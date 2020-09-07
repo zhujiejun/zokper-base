@@ -3,12 +3,29 @@
  */
 package com.zhujiejun.zokper;
 
-public class App {
+public class App implements Cloneable {
+
+    private static final String name0 = "zhujiejun0";
+
     public String getGreeting() {
-        return "Hello world.";
+        return "Hello world." + InnerClass.name1;
+    }
+
+    class InnerClass extends Thread {
+        private static final String name1 = "zhujiejun0";
+
+        @Override
+        public void run() {
+            System.out.println("--------------" + App.name0);
+        }
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        /*System.out.println(new App().getGreeting());
+        App app = new App();
+        System.out.println(app);
+        Object newApp = app.clone();
+        System.out.println(newApp);
+        System.out.println(InnerClass.name1);*/
     }
 }
